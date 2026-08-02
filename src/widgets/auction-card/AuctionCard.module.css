@@ -1,0 +1,31 @@
+.card {
+    width: 100%;
+}
+
+.route {
+    margin: 12px 0 4px !important;
+}
+
+.meta {
+    margin-bottom: 4px !important;
+}
+
+.pricing {
+    text-align: right;
+    min-width: 160px;
+}
+
+.price {
+    margin: 4px 0 !important;
+}
+
+.actions {
+    margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+    .pricing {
+        text-align: left;
+        width: 100%;
+    }
+}

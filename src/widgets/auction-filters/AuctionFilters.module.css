@@ -1,0 +1,80 @@
+.desktop {
+    display: block;
+    margin-bottom: 16px;
+    padding: 16px 16px 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(11, 61, 50, 0.08);
+    border-radius: 12px;
+}
+
+.mobileBar {
+    display: none;
+    margin-bottom: 12px;
+}
+
+.groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.group {
+    padding: 14px 14px 4px;
+    background: rgba(247, 249, 248, 0.9);
+    border: 1px solid rgba(11, 61, 50, 0.06);
+    border-radius: 10px;
+}
+
+.groupTitle {
+    margin: 0 0 2px !important;
+    color: #0b3d32 !important;
+}
+
+.groupHint {
+    margin-bottom: 12px !important;
+    font-size: 12px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+}
+
+@media (max-width: 900px) {
+    .groups {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobileBar {
+        display: block;
+    }
+
+    .groups {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .actions {
+        justify-content: stretch;
+    }
+
+    .actions :global(.ant-space) {
+        width: 100%;
+    }
+
+    .actions :global(.ant-btn) {
+        flex: 1;
+    }
+}
+
+.filtersDrawer :global(.ant-drawer-header) {
+    border-radius: 16px 0 0 0;
+}

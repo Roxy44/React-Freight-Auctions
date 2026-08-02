@@ -9,12 +9,14 @@ import { router } from '@/app/router';
 import '@/app/styles/global.css';
 
 async function enableMocking() {
-    if (import.meta.env.MODE !== 'development') {
-        return;
-    }
-
+    // Demo SPA: no real backend — MSW runs in production (e.g. GitHub Pages) too.
     const { worker } = await import('@/shared/api/msw/browser');
-    return worker.start({ onUnhandledRequest: 'bypass' });
+    return worker.start({
+        onUnhandledRequest: 'bypass',
+        serviceWorker: {
+            url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
+        },
+    });
 }
 
 const rootElement = document.getElementById('root');

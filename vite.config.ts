@@ -6,7 +6,11 @@ import { defineConfig } from 'vitest/config';
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
+/** GitHub Pages project site: set VITE_BASE_PATH=/React-Freight-Auctions/ in CI. */
+const base = process.env.VITE_BASE_PATH ?? '/';
+
 export default defineConfig({
+    base,
     plugins: [react()],
     resolve: {
         alias: {

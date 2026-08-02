@@ -1,6 +1,7 @@
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
 
 import { RootLayout } from '@/app/layouts/RootLayout.component';
+import { parseAuctionsSearchParams } from '@/entities/auction/lib/search-params';
 import { AuctionBetPage } from '@/pages/auction-bet/AuctionBetPage.component';
 import { AuctionBetsPage } from '@/pages/auction-bets/AuctionBetsPage.component';
 import { AuctionDetailPage } from '@/pages/auction-detail/AuctionDetailPage.component';
@@ -14,6 +15,7 @@ const indexRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: '/',
     component: AuctionsListPage,
+    validateSearch: (search) => parseAuctionsSearchParams(search),
 });
 
 const auctionDetailRoute = createRoute({
@@ -43,6 +45,7 @@ const routeTree = rootRoute.addChildren([
 
 export const router = createRouter({
     routeTree,
+    basepath: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
     defaultPreload: 'intent',
 });
 

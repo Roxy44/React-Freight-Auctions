@@ -15,14 +15,14 @@ Rule `.mdc` files stay English. Everything below about "language" is for humans 
 - **CSS naming:** n/a (Ant Design)
 - **Package manager:** yarn
 - **Lint / format:** ESLint + Prettier
-- **Tests:** Vitest (+ Testing Library as needed); cover pure logic (search params, builders, mappers, bet schema)
+- **Tests:** Vitest (+ `@testing-library/jest-dom`); pure logic (search params, builders, mappers, bet schema)
 - **Verify command(s):** `yarn lint`, `yarn test`, `yarn build`
 - **Branching / commits:** conventional commits; commit only when asked
-- **Hard constraints:** components `*.component.tsx`; OpenAPI is source of truth; filters via URL search params; no MobX
+- **Hard constraints:** components `*.component.tsx`; OpenAPI is source of truth (draft until official file); filters via URL search params; no MobX
 
 ## Layout
 
-- Frontend code: src/ (FSD: app, pages, widgets, features, entities, shared)
+- Frontend code: src/ (FSD: app, pages, widgets, entities, shared)
 - Backend code: n/a
-- Tests: colocated `*.test.ts(x)` + Vitest
+- Tests: colocated `*.test.ts` + Vitest
 - Docs root: docs

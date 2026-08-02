@@ -9,6 +9,14 @@
     background: #0b3d32;
 }
 
+.brandLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
 .brand {
     margin: 0 !important;
     color: #f5faf8 !important;

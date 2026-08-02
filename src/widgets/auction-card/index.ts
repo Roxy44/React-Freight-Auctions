@@ -1,1 +1,1 @@
-export {};
+export { AuctionCard } from './AuctionCard.component';

@@ -1,5 +1,3 @@
-/**
- * Public barrel for shared API helpers.
- * OpenAPI-derived types and clients will live under shared/api and entities/*.
- */
-export {};
+export { queryClient } from '@/shared/api/query-client';
+export { http } from '@/shared/api/http';
+export { ApiError, ValidationApiError } from '@/shared/api/errors';
