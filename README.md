@@ -36,11 +36,11 @@ yarn build
 
 ## Demo (GitHub Pages)
 
-После пуша в `main` workflow `Deploy GitHub Pages` собирает статику с `base=/React-Freight-Auctions/` и публикует сайт:
+После пуша в `main` workflow `Deploy GitHub Pages` собирает статику с `base=/React-Freight-Auctions/` и публикует ветку `gh-pages`.
 
-https://roxy44.github.io/React-Freight-Auctions/
+Сайт: https://roxy44.github.io/React-Freight-Auctions/
 
-В Settings → Pages источник должен быть **GitHub Actions** (первый успешный run обычно поднимает environment сам).
+Один раз в GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `gh-pages` / `/ (root)`**.
 
 ## Маршруты
 
