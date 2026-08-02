@@ -1,0 +1,28 @@
+# This project
+
+Filled by `onboarding.mdc`. Keep it under ~30 lines: facts only, no explanations. If a
+value still says `TBD`, run the onboarding interview before deep work (**M-1**).
+
+Rule `.mdc` files stay English. Everything below about "language" is for humans and memory.
+
+- **Communication language:** Russian
+- **Docs locale:** ru (content unpacked into docs/)
+- **UI / product copy:** Russian
+- **Project type:** frontend
+- **Languages:** TypeScript
+- **Frontend:** React (Vite), Ant Design, Zustand (UI-state), TanStack Query, TanStack Router, RHF+Zod, MSW, FSD
+- **Backend:** n/a (MSW mocks only)
+- **CSS naming:** n/a (Ant Design)
+- **Package manager:** yarn
+- **Lint / format:** ESLint + Prettier
+- **Tests:** Vitest (+ Testing Library as needed); cover pure logic (search params, builders, mappers, bet schema)
+- **Verify command(s):** `yarn lint`, `yarn test`, `yarn build`
+- **Branching / commits:** conventional commits; commit only when asked
+- **Hard constraints:** components `*.component.tsx`; OpenAPI is source of truth; filters via URL search params; no MobX
+
+## Layout
+
+- Frontend code: src/ (FSD: app, pages, widgets, features, entities, shared)
+- Backend code: n/a
+- Tests: colocated `*.test.ts(x)` + Vitest
+- Docs root: docs

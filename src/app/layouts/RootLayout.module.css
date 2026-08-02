@@ -1,0 +1,26 @@
+.layout {
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding-inline: 24px;
+    background: #0b3d32;
+}
+
+.brand {
+    margin: 0 !important;
+    color: #f5faf8 !important;
+}
+
+.content {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+.footer {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.45);
+}
