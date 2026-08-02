@@ -29,3 +29,9 @@ export const PRIMARY_ACTION_LABELS: Record<PrimaryAction, string> = {
     view_bets: 'Смотреть ставки',
     disabled: 'Ставка недоступна',
 };
+
+export const ROUTE_POINT_TYPE_LABELS: Record<'load' | 'unload' | 'waypoint', string> = {
+    load: 'Погрузка',
+    unload: 'Выгрузка',
+    waypoint: 'Промежуточная точка',
+};

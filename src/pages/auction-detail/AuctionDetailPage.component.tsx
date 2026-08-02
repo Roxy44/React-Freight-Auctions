@@ -7,11 +7,14 @@ import {
     AUCTION_STATUS_LABELS,
     AUCTION_TYPE_LABELS,
     PRIMARY_ACTION_LABELS,
+    ROUTE_POINT_TYPE_LABELS,
     TRADING_STATUS_LABELS,
 } from '@/entities/auction/lib/labels';
 import { DEFAULT_AUCTIONS_SEARCH } from '@/entities/auction/lib/search-params';
 import { ApiError } from '@/shared/api/errors';
 import { QueryState } from '@/shared/ui/QueryState.component';
+
+import styles from './AuctionDetailPage.module.css';
 
 export function AuctionDetailPage() {
     const { auctionUuid } = useParams({ from: '/auctions/$auctionUuid' });
@@ -28,7 +31,7 @@ export function AuctionDetailPage() {
             onRetry={() => void query.refetch()}
         >
             {auction ? (
-                <Space direction='vertical' size='large' style={{ width: '100%' }}>
+                <Space direction='vertical' size='large' className={styles.page}>
                     <Flex justify='space-between' align='flex-start' gap={12} wrap>
                         <div>
                             <Typography.Title level={2} style={{ marginBottom: 8 }}>
@@ -71,7 +74,7 @@ export function AuctionDetailPage() {
                             message='Ограничения доступа'
                             description={
                                 <ul style={{ margin: 0, paddingLeft: 18 }}>
-                                    {!auction.trading.can_set_bet ? <li>Ставку поставить нельзя (can_set_bet)</li> : null}
+                                    {!auction.trading.can_set_bet ? <li>Ставку поставить нельзя</li> : null}
                                     {auction.trading.hide_bets_history ? <li>История ставок скрыта</li> : null}
                                     {auction.trading.hide_points_address_and_contacts ? (
                                         <li>Адреса точек и контакты скрыты</li>
@@ -82,31 +85,36 @@ export function AuctionDetailPage() {
                         />
                     )}
 
-                    <Row gutter={[16, 16]}>
-                        <Col xs={24} lg={14}>
-                            <Card title='Маршрут'>
-                                <Typography.Paragraph strong>
+                    <Row gutter={[16, 16]} className={styles.grid} align='stretch'>
+                        <Col xs={24} lg={12}>
+                            <Card title='Маршрут' className={styles.card}>
+                                <Typography.Paragraph strong className={styles.routeSummary}>
                                     {auction.route.load_city} → {auction.route.unload_city}
                                     {auction.route.distance_km != null ? ` · ${auction.route.distance_km} км` : ''}
                                 </Typography.Paragraph>
-                                <Descriptions column={1} size='small'>
+                                <div className={styles.points}>
                                     {auction.route.points.map((point) => (
-                                        <Descriptions.Item
+                                        <div
                                             key={`${point.type}-${point.order}-${point.city}`}
-                                            label={`${point.type}: ${point.city}`}
+                                            className={styles.point}
                                         >
-                                            {point.address ?? 'Адрес скрыт'}
-                                            <br />
-                                            {formatDateTime(point.date_from)} — {formatDateTime(point.date_to)}
-                                        </Descriptions.Item>
+                                            <div className={styles.pointLabel}>{ROUTE_POINT_TYPE_LABELS[point.type]}</div>
+                                            <div className={styles.pointBody}>
+                                                <div className={styles.pointCity}>{point.city}</div>
+                                                <div className={styles.pointMeta}>{point.address ?? 'Адрес скрыт'}</div>
+                                                <div className={styles.pointDates}>
+                                                    {formatDateTime(point.date_from)} — {formatDateTime(point.date_to)}
+                                                </div>
+                                            </div>
+                                        </div>
                                     ))}
-                                </Descriptions>
+                                </div>
                             </Card>
                         </Col>
 
-                        <Col xs={24} lg={10}>
-                            <Card title='Торги и цена'>
-                                <Descriptions column={1} size='small'>
+                        <Col xs={24} lg={12}>
+                            <Card title='Торги и цена' className={styles.card}>
+                                <Descriptions className={styles.descriptions} column={1} size='small' colon>
                                     <Descriptions.Item label='Текущая цена'>
                                         {formatMoney(auction.pricing.current_price)}
                                     </Descriptions.Item>
@@ -132,8 +140,8 @@ export function AuctionDetailPage() {
                         </Col>
 
                         <Col xs={24} lg={12}>
-                            <Card title='Груз и ТС'>
-                                <Descriptions column={1} size='small'>
+                            <Card title='Груз и ТС' className={styles.card}>
+                                <Descriptions className={styles.descriptions} column={1} size='small' colon>
                                     <Descriptions.Item label='Название'>{auction.cargo.name}</Descriptions.Item>
                                     <Descriptions.Item label='Вес'>{auction.cargo.weight_kg ?? '—'} кг</Descriptions.Item>
                                     <Descriptions.Item label='Объём'>{auction.cargo.volume_m3 ?? '—'} м³</Descriptions.Item>
@@ -150,8 +158,8 @@ export function AuctionDetailPage() {
                         </Col>
 
                         <Col xs={24} lg={12}>
-                            <Card title='Организатор и оплата'>
-                                <Descriptions column={1} size='small'>
+                            <Card title='Организатор и оплата' className={styles.card}>
+                                <Descriptions className={styles.descriptions} column={1} size='small' colon>
                                     <Descriptions.Item label='Организатор'>{auction.organizer.name}</Descriptions.Item>
                                     <Descriptions.Item label='ИНН'>{auction.organizer.inn ?? '—'}</Descriptions.Item>
                                     <Descriptions.Item label='Рейтинг'>{auction.organizer.rating ?? '—'}</Descriptions.Item>

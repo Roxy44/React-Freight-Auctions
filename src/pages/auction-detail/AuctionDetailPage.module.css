@@ -1,0 +1,128 @@
+.page {
+    width: 100%;
+}
+
+.grid :global(.ant-col) {
+    display: flex;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card :global(.ant-card-body) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptions {
+    flex: 1;
+    width: 100%;
+}
+
+.descriptions :global(.ant-descriptions-view),
+.descriptions :global(.ant-descriptions-view > table) {
+    width: 100%;
+}
+
+.descriptions :global(.ant-descriptions-item-container) {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.descriptions :global(.ant-descriptions-item-label) {
+    flex: 0 0 148px;
+    width: 148px !important;
+    max-width: 148px;
+    color: rgba(0, 0, 0, 0.45);
+    white-space: normal;
+}
+
+.descriptions :global(.ant-descriptions-item-content) {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto !important;
+    display: block !important;
+    padding-bottom: 10px;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.routeSummary {
+    margin-bottom: 16px !important;
+}
+
+.points {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.point {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+}
+
+.pointLabel {
+    color: rgba(0, 0, 0, 0.45);
+    line-height: 1.5;
+}
+
+.pointLabel::after {
+    content: ':';
+}
+
+.pointBody {
+    min-width: 0;
+}
+
+.pointCity {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.88);
+    line-height: 1.45;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.pointMeta {
+    margin-top: 2px;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.45;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.pointDates {
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 13px;
+    line-height: 1.45;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .descriptions :global(.ant-descriptions-item-label) {
+        flex-basis: 50%;
+        width: 50% !important;
+        max-width: 50%;
+    }
+
+    .descriptions :global(.ant-descriptions-item-content) {
+        flex-basis: 50%;
+    }
+
+    .point {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 10px;
+    }
+}
