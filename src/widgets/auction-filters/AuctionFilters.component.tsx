@@ -224,14 +224,19 @@ export function AuctionFilters({ value, onApply, onReset }: AuctionFiltersProps)
 
             <Drawer
                 title='Фильтры'
+                placement='bottom'
                 open={isOpen}
                 onClose={() => setOpen(false)}
-                width={360}
+                height='90%'
                 destroyOnHidden
-                className={styles.filtersDrawer}
+                rootClassName={styles.filtersDrawer}
                 styles={{
-                    content: {
-                        borderRadius: '16px 0 0 16px',
+                    wrapper: {
+                        borderRadius: '20px 20px 0 0',
+                        overflow: 'hidden',
+                    },
+                    section: {
+                        borderRadius: '20px 20px 0 0',
                         overflow: 'hidden',
                     },
                 }}

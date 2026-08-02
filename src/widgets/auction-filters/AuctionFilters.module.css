@@ -75,6 +75,8 @@
     }
 }
 
-.filtersDrawer :global(.ant-drawer-header) {
-    border-radius: 16px 0 0 0;
+.filtersDrawer :global(.ant-drawer-content-wrapper),
+.filtersDrawer :global(.ant-drawer-section) {
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
 }
